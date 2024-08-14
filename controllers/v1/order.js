@@ -1,4 +1,4 @@
-const { orders } = require("../../models");
+const { orders } = require('../../models');
 
 const getAll = async (req, res) => {
   const list = await orders.findAll();
@@ -12,6 +12,8 @@ const getById = async (req, res) => {
 
 const Placeorder = async (req, res) => {
   const list = await orders.create({
+    productId: req.body.productId,
+    customerId: req.body.customerId,
     status: req.body.status,
     deliveryAddress: req.body.deliveryAddress,
     deliveryDate: req.body.deliveryDate,
@@ -22,6 +24,8 @@ const Placeorder = async (req, res) => {
 const updateOrder = async (req, res) => {
   const updatedList = await orders.update(
     {
+      productId: req.body.productId,
+      customerId: req.body.customerId,
       status: req.body.status,
       deliveryAddress: req.body.deliveryAddress,
       deliveryDate: req.body.deliveryDate,

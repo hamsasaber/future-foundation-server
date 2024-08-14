@@ -1,15 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-  const orders = sequelize.define("orders", {
+  const orders = sequelize.define('orders', {
     status: {
-      type: DataTypes.ENUM(
-        "placed",
-        "processing",
-        "shipped",
-        "delivered",
-        "post-poned",
-        "cancelled"
-      ),
-      defaultValue: "placed",
+      type: DataTypes.ENUM('placed', 'processing', 'shipped', 'delivered', 'postponed', 'cancelled'),
+      defaultValue: 'placed',
     },
     deliveryAddress: {
       type: DataTypes.STRING,
@@ -20,5 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
+  orders.associate = (models) => {
+    orders.belongsTo(models.customers);
+    orders.belongsTo(models.products);
+  };
   return orders;
 };
