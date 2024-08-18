@@ -16,7 +16,7 @@ app.use(express.json());
 //   //when used with a route it checks middleware condition el awl before rerouting to original path
 // };
 
-//route byakhod el file name w byraga3holy
+//route byakhod el file name w byraga3holy (syntax is consistent whenever im working with images)
 app.get("/images/:name", function (req, res, next) {
   var options = {
     root: path.join(__dirname, "images"),
