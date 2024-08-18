@@ -16,7 +16,7 @@ const createProduct = async (req, res) => {
     price: req.body.price,
     quantity: req.body.quantity,
     rating: req.body.rating,
-    image: req.file.path,
+    image: req.file ? req.file.path : "", //ifimage exists byhotaha otherwise btb2a empty ""
   });
   res.json(product);
 };

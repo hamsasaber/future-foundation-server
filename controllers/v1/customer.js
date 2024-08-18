@@ -14,11 +14,12 @@ const getById = async (req, res) => {
 
 //post
 const create = async (req, res) => {
+  console.log(req);
   const list = await customers.create(
     //object fy el fields ely ana 3yzaha bzbt
     {
-      username: req.body.username || "john doe", //lw mafeesh username hayhot default john doe
-      email: req.body.email || "john@example.com", //lw mafeesh email
+      username: req.body.username ?? "john doe", //lw mafeesh username hayhot default john doe
+      email: req.body.email ?? "john@example.com", //lw mafeesh email
       //... any other fields you want to add here for table customers
     }
   );

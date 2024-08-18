@@ -1,7 +1,17 @@
-const { orders } = require('../../models');
+const { orders, products, customers } = require("../../models"); //tables from folder models
 
 const getAll = async (req, res) => {
-  const list = await orders.findAll();
+  const list = await orders.findAll({
+    //b3ml include 3shan a3ml join between tables products w orders so when i get orders byb2a ma3aya corresponding products object to be able to access them
+    include: [
+      {
+        model: products,
+      },
+      {
+        model: customers,
+      },
+    ],
+  });
   res.json(list);
 };
 
